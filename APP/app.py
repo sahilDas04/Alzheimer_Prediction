@@ -34,24 +34,21 @@ def user_input():
 
 input_df = user_input()
 
-st.subheader("✅ Patient Data")
+st.subheader(" Patient Data")
 st.write(input_df)
 
-# ✅ Predict Button
-if st.button("🔍 Predict Alzheimer's Diagnosis"):
+if st.button(" Predict Alzheimer's Diagnosis"):
 
-    # ✅ Ensure column order matches training
     input_df = input_df[model.feature_names_in_]
 
-    # ✅ Predict
     prediction = model.predict(input_df)[0]
     prediction_prob = model.predict_proba(input_df)[0][1]
 
-    st.subheader("✅ Prediction Result:")
+    st.subheader(" Prediction Result:")
     if prediction == 1:
-        st.error("🔴 Model Prediction: Patient is likely to have Alzheimer's Disease.")
+        st.error(" Model Prediction: Patient is likely to have Alzheimer's Disease.")
     else:
-        st.success("🟢 Model Prediction: Patient is unlikely to have Alzheimer's Disease.")
+        st.success(" Model Prediction: Patient is unlikely to have Alzheimer's Disease.")
 
-    st.subheader("✅ Prediction Probability")
+    st.subheader(" Prediction Probability")
     st.write(f"Probability of Diagnosis = {prediction_prob:.2f}")
